@@ -1,0 +1,21 @@
+I need to summarize a feedback . The details of the feedback is between the <data> XML like tags.
+    
+    <data>
+    {{feedback}}
+    </data>
+    
+The summary must contain a one word sentiment analysis, and a list of feedback, issues or causes of the issues. The output must be provided in JSON format shown in the following example. 
+    
+    Example output:
+    {
+        "version": 1.0,
+        "sentiment": <sentiment>,
+        "feedback": [
+            {
+                "topic": <topic>,
+                "summary": <issue_summary>,
+            }
+        ]
+    }
+   
+Write the JSON output.
