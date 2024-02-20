@@ -35,6 +35,12 @@ Parameters:
     MaxLength: '255'
     Description: The name of the bucket where object  need to be download
     Default: prompt.txt
+  KeyReview:
+    Type: String
+    MinLength: '3'
+    MaxLength: '255'
+    Description: The name of the bucket where object  need to be download
+    Default: review.txt
 Resources:
   LambdaRole:
     Type: AWS::IAM::Role
@@ -95,6 +101,7 @@ Resources:
         Variables:
           SOURCEBUCKET: !Ref BucketName
           SOURCEFILE: !Ref KeyName
+          SOURCEREVIEW: !Ref KeyReview
       Code:
         S3Bucket: bsourceprompt
         S3Key: my_deployment_package.zip

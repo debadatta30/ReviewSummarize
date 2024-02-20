@@ -11,6 +11,7 @@ logger.setLevel(logging.INFO)
 # Env variables from  CFN 
 bucket_name = os.environ['SOURCEBUCKET']
 key = os.environ['SOURCEFILE']
+keyReview = os.environ['SOURCEREVIEW']
 
 s3_client = boto3.client('s3')
 bedrock_runtime = boto3.client('bedrock-runtime', 'us-east-1')
@@ -19,13 +20,13 @@ def lambda_handler(event, context):
     #print("Received event: " + json.dumps(event, indent=2))
     try:
         review_content = ""
-        response = s3_client.get_object(Bucket=bucket_name, Key="review.txt")
+        response = s3_client.get_object(Bucket=bucket_name, Key=keyReview)
         review_content = response['Body'].read().decode('utf-8')
         prompt_content = ""
         response = s3_client.get_object(Bucket=bucket_name, Key=key)
         prompt_content = response['Body'].read().decode('utf-8')
         data = {
-            'transcript' : review_content
+            'feedback' : review_content
         }
         template = Template(prompt_content)
         prompt = template.render(data)
