@@ -1,5 +1,8 @@
 # ReviewSummarize
-This code read a user feedback file from a S3 and use a predefined prompt template to produce the sentiment of the user feedback ad list of issues and store the output in the same S3 bucket.
+This code read a user feedback file from a S3 and use a predefined prompt template to produce the sentiment of the user feedback ad list of issues and store the output in the same S3 bucket. I have provided a sample prompt with the prompt.txt , you cam modify this to test.Both the file required review file and prompt files will be in the same bucket.
+The architecture and flow of the sample application will be:
+
+![image](https://github.com/debadatta30/ReviewSummarize/assets/136390466/77d4814b-32f2-412c-b18b-cd1afc50293c)
 
 The code contains the cloudformation templates which will create the AWS Lambda Function which uses the Bedrock to invoke the Amazon titan-text-express-v1 model. 
 
