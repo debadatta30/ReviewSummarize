@@ -49,7 +49,7 @@ def lambda_handler(event, context):
         }
         response = bedrock_runtime.invoke_model(**config)
         summarize = json.loads(response.get('body').read()).get('results')[0].get('outputText')   
-        Keyresult = key + 'results.txt'
+        Keyresult = 'output.txt'
         s3_client.put_object(
             Bucket=bucket_name,
             Key=Keyresult,
